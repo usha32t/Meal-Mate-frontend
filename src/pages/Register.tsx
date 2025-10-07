@@ -19,7 +19,9 @@ const Register: React.FC = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/auth/register", formData);
+      // Use res or remove variable to avoid TS warning
+      await axios.post("http://localhost:5000/auth/register", formData);
+
       setMessage("Registration successful! Please log in.");
       setShowModal(true);
       setFormData({ email: "", password: "" });
@@ -35,8 +37,7 @@ const Register: React.FC = () => {
     <div
       className="flex items-center justify-center min-h-screen bg-cover bg-center"
       style={{
-         backgroundImage: `url("https://tse1.mm.bing.net/th/id/OIP.zk8avcjfd6gewNwAz2gaDQHaEK?w=1060&h=596&rs=1&pid=ImgDetMain&o=7&rm=3")`,
-
+        backgroundImage: `url("https://tse1.mm.bing.net/th/id/OIP.zk8avcjfd6gewNwAz2gaDQHaEK?w=1060&h=596&rs=1&pid=ImgDetMain&o=7&rm=3")`,
       }}
     >
       <form
@@ -75,7 +76,9 @@ const Register: React.FC = () => {
 
         <p className="mt-4 text-sm text-center">
           Already have an account?{" "}
-          <a href="/login" className="text-blue-500">Login</a>
+          <a href="/login" className="text-blue-500">
+            Login
+          </a>
         </p>
       </form>
 

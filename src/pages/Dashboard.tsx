@@ -81,7 +81,8 @@ const Dashboard: React.FC = () => {
     <div
       className="min-h-screen bg-cover bg-center"
       style={{
-        backgroundImage: "url('https://www.forbes.com/advisor/wp-content/uploads/2023/11/image1-34.jpg')",
+        backgroundImage:
+          "url('https://www.forbes.com/advisor/wp-content/uploads/2023/11/image1-34.jpg')",
       }}
     >
       <div className="min-h-screen bg-white bg-opacity-50">
@@ -89,9 +90,24 @@ const Dashboard: React.FC = () => {
         <div className="bg-white bg-opacity-50 shadow px-6 py-4 flex justify-between items-center">
           <h1 className="text-xl font-bold text-purple-700">MealMate 🍽️</h1>
           <div className="space-x-6">
-            <Link to="/dashboard" className="text-blue-700 font-medium hover:underline">Dashboard</Link>
-            <Link to="/meals" className="text-blue-700 font-medium hover:underline">Log</Link>
-            <Link to="/admin-dashboard" className="text-blue-700 font-medium hover:underline">MealAdmin</Link>
+            <Link
+              to="/dashboard"
+              className="text-blue-700 font-medium hover:underline"
+            >
+              Dashboard
+            </Link>
+            <Link
+              to="/meals"
+              className="text-blue-700 font-medium hover:underline"
+            >
+              Log
+            </Link>
+            <Link
+              to="/admin-dashboard"
+              className="text-blue-700 font-medium hover:underline"
+            >
+              MealAdmin
+            </Link>
             <button
               onClick={handleLogout}
               className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600"
@@ -104,12 +120,24 @@ const Dashboard: React.FC = () => {
         {/* User Info */}
         <div className="p-6 grid grid-cols-1 lg:grid-cols-3 gap-4">
           <div className="col-span-3 bg-white bg-opacity-90 rounded-xl shadow p-6 flex flex-wrap justify-between gap-2">
-            <div><strong>Name:</strong> {user.name}</div>
-            <div><strong>Calorie Goal:</strong> {user.calorieGoal} kcal</div>
-            <div><strong>Age:</strong> {user.age}</div>
-            <div><strong>Gender:</strong> {user.gender}</div>
-            <div><strong>Height:</strong> {user.height}</div>
-            <div><strong>Weight:</strong> {user.weight}</div>
+            <div>
+              <strong>Name:</strong> {user.name}
+            </div>
+            <div>
+              <strong>Calorie Goal:</strong> {user.calorieGoal} kcal
+            </div>
+            <div>
+              <strong>Age:</strong> {user.age}
+            </div>
+            <div>
+              <strong>Gender:</strong> {user.gender}
+            </div>
+            <div>
+              <strong>Height:</strong> {user.height}
+            </div>
+            <div>
+              <strong>Weight:</strong> {user.weight}
+            </div>
           </div>
 
           {/* Stats */}
@@ -166,8 +194,11 @@ const Dashboard: React.FC = () => {
                   outerRadius={80}
                   label
                 >
-                  {macroData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  {macroData.map((_, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
                   ))}
                 </Pie>
                 <Legend />
@@ -182,14 +213,24 @@ const Dashboard: React.FC = () => {
           <div className="bg-white bg-opacity-90 rounded-xl shadow p-6">
             <h3 className="text-lg font-semibold mb-4">Recent Meal History</h3>
             <ul className="divide-y divide-gray-200">
-              {meals.slice(-5).reverse().map((meal, index) => (
-                <li key={index} className="py-2 flex justify-between text-sm">
-                  <span>{meal.name} ({meal.category}) - {meal.calories} kcal</span>
-                  <span className="text-gray-500">
-                    {meal.timestamp ? new Date(meal.timestamp).toLocaleString() : "Unknown time"}
-                  </span>
-                </li>
-              ))}
+              {meals
+                .slice(-5)
+                .reverse()
+                .map((meal, index) => (
+                  <li
+                    key={index}
+                    className="py-2 flex justify-between text-sm"
+                  >
+                    <span>
+                      {meal.name} ({meal.category}) - {meal.calories} kcal
+                    </span>
+                    <span className="text-gray-500">
+                      {meal.timestamp
+                        ? new Date(meal.timestamp).toLocaleString()
+                        : "Unknown time"}
+                    </span>
+                  </li>
+                ))}
             </ul>
           </div>
         </div>
@@ -199,4 +240,3 @@ const Dashboard: React.FC = () => {
 };
 
 export default Dashboard;
-

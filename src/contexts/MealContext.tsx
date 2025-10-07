@@ -1,10 +1,5 @@
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
+import type { ReactNode } from "react"; // ✅ Type-only import
 import axios from "../services/api";
 
 interface Meal {
@@ -17,7 +12,7 @@ interface Meal {
   fat?: number;
   note?: string;
   timestamp?: string;
-  audio_url?: string; // ✅ Optional: for audio note count
+  audio_url?: string; // Optional: for audio note count
 }
 
 interface MealContextType {
@@ -35,14 +30,16 @@ export const useMeals = (): MealContextType => {
   return context;
 };
 
-export const MealProvider: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+interface MealProviderProps {
+  children: ReactNode;
+}
+
+export const MealProvider: React.FC<MealProviderProps> = ({ children }) => {
   const [meals, setMeals] = useState<Meal[]>([]);
 
   const fetchMeals = async () => {
     try {
-      const res = await axios.get("/meals"); // ✅ Full path handled in axios baseURL
+      const res = await axios.get("/meals"); // Full path handled in axios baseURL
       setMeals(res.data);
     } catch (error) {
       console.error("❌ Error fetching meals:", error);
