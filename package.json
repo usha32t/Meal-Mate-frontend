@@ -3,11 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://usha32t.github.io/Meal-Mate-frontend",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "preview": "vite preview",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "axios": "^1.10.0",
@@ -15,7 +18,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-is": "^19.2.0",
-    "react-mic": "^12.4.6",
+    "react-media-recorder": "^1.7.2",
     "react-router-dom": "^7.6.3",
     "recharts": "^3.1.0"
   },
@@ -29,6 +32,7 @@
     "eslint": "^9.29.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
+    "gh-pages": "^6.3.0",
     "globals": "^16.2.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17",
