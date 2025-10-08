@@ -1,7 +1,8 @@
 import axios from "axios";
 
+// ✅ Base URL points to your Railway backend
 const api = axios.create({
-  baseURL: "http://localhost:5000/api", // Adjust if backend runs on a different host/port
+  baseURL: "https://meal-mate-backend-production.up.railway.app", // Railway backend URL
   headers: {
     "Content-Type": "application/json",
   },
@@ -17,5 +18,3 @@ api.interceptors.request.use((config) => {
 });
 
 export default api;
-
-
