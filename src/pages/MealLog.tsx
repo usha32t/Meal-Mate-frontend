@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "../services/api";
+import api from "../services/api"; // ✅ use api instead of axios
 import { useMeals } from "../contexts/MealContext";
 
 const MealLog: React.FC = () => {
@@ -28,7 +28,9 @@ const MealLog: React.FC = () => {
         timestamp: new Date().toISOString(),
       };
 
-      await axios.post("/meals", newMeal);
+      // ✅ Use api.post instead of axios.post
+      await api.post("/meals", newMeal);
+
       await fetchMeals();
       const bc = new BroadcastChannel("meal-updates");
       bc.postMessage("meal-logged");
@@ -51,7 +53,7 @@ const MealLog: React.FC = () => {
   const handleDelete = async (id: number) => {
     if (!window.confirm("Are you sure you want to delete this meal?")) return;
     try {
-      await axios.delete(`/meals/${id}`);
+      await api.delete(`/meals/${id}`); // ✅ use api.delete
       await fetchMeals();
       const bc = new BroadcastChannel("meal-updates");
       bc.postMessage("meal-logged");

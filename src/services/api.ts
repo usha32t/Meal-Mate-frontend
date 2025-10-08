@@ -1,8 +1,8 @@
 import axios from "axios";
 
-// ✅ Base URL points to your Railway backend
 const api = axios.create({
-  baseURL: "https://meal-mate-backend-production.up.railway.app", // Railway backend URL
+  // ✅ Set baseURL to your deployed backend URL
+  baseURL: "https://meal-mate-backend-production.up.railway.app/api",
   headers: {
     "Content-Type": "application/json",
   },
