@@ -2,7 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
   // ✅ Set baseURL to your deployed backend URL
-  baseURL: "https://meal-mate-backend-production.up.railway.app/api",
+  baseURL: "https://meal-mate-backend-production.up.railway.app/auth/register",
   headers: {
     "Content-Type": "application/json",
   },
