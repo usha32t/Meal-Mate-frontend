@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import api from "../services/api"; // ✅ Use deployed Axios instance
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -23,8 +23,11 @@ const Login: React.FC = () => {
     setErrorMsg("");
 
     try {
-      const res = await axios.post("http://localhost:5000/auth/login", formData);
-      localStorage.setItem("token", res.data.access_token);
+      // ✅ Call deployed backend
+      const res = await api.post("/auth/login", formData);
+
+      // ✅ Store JWT token in localStorage
+      localStorage.setItem("token", res.data.token); // use 'token' key
       navigate("/dashboard");
     } catch (err: any) {
       setErrorMsg(err.response?.data?.error || "Login failed.");
@@ -70,6 +73,7 @@ const Login: React.FC = () => {
               value={formData.email}
               onChange={handleChange}
               required
+              autoComplete="username"
               style={{
                 width: "100%",
                 padding: "0.5rem",
@@ -88,6 +92,7 @@ const Login: React.FC = () => {
               value={formData.password}
               onChange={handleChange}
               required
+              autoComplete="current-password"
               style={{
                 width: "100%",
                 padding: "0.5rem",

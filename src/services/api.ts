@@ -1,8 +1,8 @@
 import axios from "axios";
 
+// ✅ Axios instance pointing to deployed backend root
 const api = axios.create({
-  // ✅ Set baseURL to your deployed backend URL
-  baseURL: "https://meal-mate-backend-production.up.railway.app/auth/register",
+  baseURL: "https://meal-mate-backend-production.up.railway.app", // backend root
   headers: {
     "Content-Type": "application/json",
   },
